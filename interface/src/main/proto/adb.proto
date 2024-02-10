@@ -1,0 +1,20 @@
+syntax = "proto3";
+import "util.proto";
+
+package com.marble.android.node.grpc;
+
+option java_multiple_files = true;
+option java_package = "com.marble.android.node.grpc";
+option java_outer_classname = "AdbProto";
+
+message ExecuteAdbCommandRequest {
+  string command = 1;
+}
+
+message ExecuteAdbCommandResponse {
+  string output = 1;
+}
+
+service AdbService {
+  rpc ExecuteAdbCommand(ExecuteAdbCommandRequest) returns (ExecuteAdbCommandResponse);
+}

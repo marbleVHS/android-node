@@ -1,0 +1,34 @@
+syntax = "proto3";
+import "util.proto";
+
+package com.marble.android.node.grpc;
+
+option java_multiple_files = true;
+option java_package = "com.marble.android.node.grpc";
+option java_outer_classname = "NodeProto";
+
+message UploadFileRequest {
+  oneof partType {
+    string fileName = 1;
+    bytes fileChunk = 2;
+  }
+}
+
+message UploadFileResponse {
+  string fileName = 1;
+  string message = 2;
+}
+
+message DeleteFileRequest {
+  string fileName = 1;
+}
+
+message DeleteFileResponse {
+  string fileName = 1;
+  string message = 2;
+}
+
+service NodeService {
+  rpc UploadFile(stream UploadFileRequest) returns (UploadFileResponse) {}
+  rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse) {}
+}

@@ -1,0 +1,33 @@
+[versions]
+shadowJar = "7.1.2"
+protobufPlugin = "0.9.4"
+protobuf = "3.25.2"
+grpc = "1.61.0"
+jakartaAnnotationApi = "1.3.5"
+springboot = "3.2.2"
+springDependency = "1.1.4"
+grpcStarter = "2.15.0.RELEASE"
+jib = "3.4.0"
+
+[libraries]
+grpcProtobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc" }
+grpcStub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
+grpcNetty = { module = "io.grpc:grpc-netty", version.ref = "grpc" }
+jakartaAnnotationApi = { module = "jakarta.annotation:jakarta.annotation-api", version.ref = "jakartaAnnotationApi" }
+dataJdbcStarter = { module = "org.springframework.boot:spring-boot-starter-data-jdbc" }
+thymeleafStarter = { module = "org.springframework.boot:spring-boot-starter-thymeleaf" }
+webStarter = { module = "org.springframework.boot:spring-boot-starter-web" }
+grpcStarter = { module = "net.devh:grpc-server-spring-boot-starter", version.ref = "grpcStarter" }
+lombok = { module = "org.projectlombok:lombok" }
+devTools = { module = "org.springframework.boot:spring-boot-devtools" }
+postgresql = { module = "org.postgresql:postgresql" }
+testStarter = { module = "org.springframework.boot:spring-boot-starter-test" }
+
+
+
+[plugins]
+shadowJar = { id = "com.github.johnrengelman.shadow", version.ref = "shadowJar" }
+protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
+springboot = { id = "org.springframework.boot", version.ref = "springboot" }
+springDependency = { id = "io.spring.dependency-management", version.ref = "springDependency" }
+jib = { id = "com.google.cloud.tools.jib", version.ref = "jib" }

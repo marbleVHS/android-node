@@ -1,0 +1,45 @@
+syntax = "proto3";
+import "util.proto";
+
+package com.marble.android.node.grpc;
+
+option java_multiple_files = true;
+option java_package = "com.marble.android.node.grpc";
+option java_outer_classname = "EmulatorProto";
+
+
+enum EmulatorState {
+  STARTING = 0;
+  STARTED = 1;
+  STOPPED = 2;
+  FAILED = 3;
+}
+
+message StartEmulatorRequest {
+  bool withAcceleration = 1;
+}
+
+message StartEmulatorResponse {
+  EmulatorState emulatorState = 1;
+  string message = 2;
+}
+
+message StopEmulatorResponse {
+  EmulatorState emulatorState = 1;
+  string message = 2;
+}
+
+message InstallApkRequest {
+  string apkName = 1;
+}
+
+message InstallApkResponse {
+  string apkName = 1;
+  string message = 2;
+}
+
+service EmulatorService {
+  rpc StartEmulator(StartEmulatorRequest) returns (stream StartEmulatorResponse) {}
+  rpc StopEmulator(Void) returns (StopEmulatorResponse) {}
+  rpc InstallApk(InstallApkRequest) returns (InstallApkResponse) {}
+}
